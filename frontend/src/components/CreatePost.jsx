@@ -57,7 +57,7 @@ function CreatePost() {
           <label htmlFor="content" className="sr-only">Contenido</label>
           <textarea
             id="content"
-            rows="1" // Reducimos las filas por defecto para que sea más compacto
+            rows="1"
             className="w-full border-b-2 border-gray-300 focus:border-violet-500 focus:outline-none placeholder-gray-500 transition duration-200 resize-none"
             placeholder="Comparte tu historia..."
             value={content}

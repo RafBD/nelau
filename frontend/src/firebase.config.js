@@ -1,22 +1,20 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
 
 // Configuración de Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyAMnuDM46rmdA6jjPkfp1iv5drxAcyaCxc",
-  authDomain: "nelau-app.firebaseapp.com",
-  projectId: "nelau-app",
-  storageBucket: "nelau-app.firebasestorage.app",
-  messagingSenderId: "795973955629",
-  appId: "1:795973955629:web:5ba3a7da62a9af6a5948a4",
-  measurementId: "G-R0FDFM7JE1"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 // Inicializa los servicios de Firebase que vamos a usar
 export const auth = getAuth(app);
