@@ -4,7 +4,6 @@ import { db, auth } from '../firebase.config';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 function CreatePost() {
-  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -24,8 +23,8 @@ function CreatePost() {
       return;
     }
 
-    if (!title.trim() || !content.trim()) {
-      setError('El título y el contenido no pueden estar vacíos.');
+    if (!content.trim()) {
+      setError('El contenido no pueden estar vacíos.');
       setLoading(false);
       return;
     }
@@ -34,12 +33,10 @@ function CreatePost() {
       await addDoc(collection(db, 'posts'), {
         userId: currentUser.uid,
         userName: currentUser.displayName || currentUser.email.split('@')[0],
-        title: title.trim(),
         content: content.trim(),
         createdAt: serverTimestamp()
       });
       setSuccess('¡Publicación creada con éxito!');
-      setTitle('');
       setContent('');
     } catch (err) {
       console.error("Error al crear la publicación:", err);
@@ -57,18 +54,6 @@ function CreatePost() {
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div>
-          <label htmlFor="title" className="sr-only">Título</label>
-          <input
-            type="text"
-            id="title"
-            className="w-full border-b-2 border-gray-300 focus:border-violet-500 focus:outline-none placeholder-gray-500 transition duration-200"
-            placeholder="Título"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
           <label htmlFor="content" className="sr-only">Contenido</label>
           <textarea
             id="content"
@@ -77,7 +62,6 @@ function CreatePost() {
             placeholder="Comparte tu historia..."
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            required
           ></textarea>
         </div>
         <div className="flex justify-end"> {/* Botón a la derecha */}

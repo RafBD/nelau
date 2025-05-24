@@ -56,7 +56,6 @@ function PostList() {
                 </div>
               </div>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
             <p className="text-gray-700 whitespace-pre-line leading-relaxed">{post.content}</p>
             {/* Aquí podríamos añadir botones de "Me gusta", "Comentar", etc. en el futuro */}
           </div>
