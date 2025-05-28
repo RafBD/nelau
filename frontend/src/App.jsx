@@ -53,7 +53,7 @@ function App() {
 
   if (loadingAuth) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl font-semibold">
+      <div className="min-h-screen bg-gradient-to-br light:from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl font-semibold">
         Cargando NeLau...
       </div>
     );
@@ -74,7 +74,7 @@ function App() {
         </div>
       ) : (
         // Pantalla de autenticación si no hay usuario
-        <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center p-4">
+        <div className="min-h-screen dark:bg-neutral-700 flex items-center justify-center p-4">
           <AuthForm
             type={isRegistering ? "register" : "login"}
             onSubmit={isRegistering ? handleRegister : handleLogin}
